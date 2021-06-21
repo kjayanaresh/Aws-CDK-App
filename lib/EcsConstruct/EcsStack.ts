@@ -23,10 +23,11 @@ export class EcsStack extends cdk.Stack {
     // Create a load-balanced Fargate service and make it public
     new ecs_patterns.ApplicationLoadBalancedFargateService(this, "MyFargateService", {
       cluster: cluster, // Required
-      cpu: 512, // Default is 256
-      desiredCount: 6, // Default is 1
-      taskImageOptions: { image: ecs.ContainerImage.fromRegistry("amazon/amazon-ecs-sample") },
-      memoryLimitMiB: 2048, // Default is 512
+      cpu: 256, // Default is 256
+      desiredCount: 2, // Default is 1
+      taskImageOptions: { 
+        image: ecs.ContainerImage.fromRegistry("4273924361019.dkr.ecr.us-west-2.amazonaws.com/public:latest") }, //amazon/amazon-ecs-sample
+      memoryLimitMiB: 512, // Default is 512
       publicLoadBalancer: true // Default is false
     });
   }
